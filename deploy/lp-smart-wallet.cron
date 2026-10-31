@@ -1,0 +1,12 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+CRON_TZ=UTC
+
+# Top LP Smart Wallet Finder — scan tiap 5 menit. flock mencegah tumpang tindih.
+*/5 * * * * lpbot cd /opt/lp-smart-wallet && flock -n /opt/lp-smart-wallet/locks/scan.lock /usr/bin/python3 scanner.py >> /opt/lp-smart-wallet/logs/scan.log 2>&1
+
+# Segarkan harga pool, edge fee-IL, dan skor wallet tiap 15 menit.
+*/15 * * * * lpbot cd /opt/lp-smart-wallet && flock -n /opt/lp-smart-wallet/locks/track.lock /usr/bin/python3 track.py >> /opt/lp-smart-wallet/logs/track.log 2>&1
+
+# Laporan harian ke Telegram (07:00 UTC = 14:00 WIB).
+0 7 * * * lpbot cd /opt/lp-smart-wallet && /usr/bin/python3 report.py --telegram >> /opt/lp-smart-wallet/logs/report.log 2>&1
