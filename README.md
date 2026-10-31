@@ -1,5 +1,7 @@
 # Top LP Smart Wallet Finder
 
+[English](README.en.md) | **Bahasa Indonesia**
+
 Bot **read-only** untuk menemukan wallet LP pintar di Solana. Bot mencari
 wallet yang menambah likuiditas di pool yang sedang menang, lalu menilai
 apakah fee LP lebih besar daripada impermanent loss (IL). Kandidat terbaik

@@ -50,7 +50,8 @@ mkdir -p "$DST"
 for f in \
   config.py net.py sources.py filters.py db.py telegram.py i18n.py \
   base58.py programs.py solana_lp.py scoring.py render.py \
-  scanner.py track.py report.py doctor.py README.md .env.example LICENSE; do
+  scanner.py track.py report.py doctor.py README.md README.en.md \
+  .env.example LICENSE; do
   install -m 0644 -o "$RUN_USER" -g "$RUN_USER" "$SRC/$f" "$DST/$f"
 done
 mkdir -p "$DST/tests" "$DST/deploy" "$DST/data" "$DST/logs" "$DST/locks"
